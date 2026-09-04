@@ -1,0 +1,42 @@
+<section class="hero">
+  <div class="hero__media" aria-hidden="true"></div>
+
+  <div class="hero__carousel" aria-hidden="true">
+    @for (image of images; track $index) {
+      <div
+        class="hero__slide"
+        [class.hero__slide--active]="$index === activeIndex()"
+        [style.backgroundImage]="image ? 'url(\'' + image + '\')' : null"
+      ></div>
+    }
+  </div>
+
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <h1>Donde las ideas encuentran quién las haga crecer, desde cualquier lugar de Latam</h1>
+
+    <div class="hero__ctas">
+      <a href="#explorar" class="btn btn--primary">Explorar oportunidades</a>
+      <a href="#publicar" class="btn btn--ghost">Publicar proyecto</a>
+    </div>
+
+    <p class="hero__desc">
+      WinWin Dream es el puente solidario entre quienes tienen ideas de impacto y quienes quieren
+      ayudar: colaborando, donando o siendo voluntarios, con total transparencia para las comunidades
+      de Latinoamérica.
+    </p>
+  </div>
+
+  <div class="dots hero__dots" role="tablist" aria-label="Selector de imágenes del hero">
+    @for (image of images; track $index) {
+      <button
+        type="button"
+        class="dot"
+        [class.dot--active]="$index === activeIndex()"
+        [attr.aria-label]="'Ir a la imagen ' + ($index + 1)"
+        (click)="goTo($index)"
+      ></button>
+    }
+  </div>
+</section>

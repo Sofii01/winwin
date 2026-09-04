@@ -1,0 +1,124 @@
+.hero {
+  position: relative;
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: var(--white);
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue) 60%, var(--olive-dark));
+}
+
+.hero__carousel {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.hero__slide--active {
+  opacity: 1;
+}
+
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.hero h1 {
+  max-width: 620px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-style: italic;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.hero .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.hero .btn--primary {
+  background: var(--blue-dark);
+  color: var(--white);
+}
+
+.hero .btn--primary:hover {
+  background: var(--blue);
+}
+
+.btn--ghost {
+  border: 1px solid var(--white);
+  color: var(--white);
+}
+
+.btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.hero__desc {
+  max-width: 600px;
+  font-weight: 700;
+}
+
+.hero__dots {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.dot--active {
+  background: var(--olive);
+}
