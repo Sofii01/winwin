@@ -1,13 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Poppins:wght@700;900&display=swap');
 
 :root {
+  --lime: #a3e635;
+  --lime-soft: #c8f086;
   --olive: #7db81e;
   --olive-dark: #608c18;
   --blue: #0052cc;
   --blue-dark: #00317a;
+  --steel-blue: #6697e0;
   --white: #ffffff;
+  --grey: #7b7b7b;
+  --grey-light: #b9b9b9;
+  --ink: #191919;
+
   --font-display: 'Poppins', sans-serif;
   --font-body: 'Manrope', sans-serif;
+
+  --radius-lg: 20px;
+  --radius-xl: 30px;
+  --container: 1200px;
 }
 
 * {
@@ -22,4 +33,16 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--olive);
+  margin-bottom: 12px;
+}
+
+.eyebrow--light {
+  color: var(--lime);
 }

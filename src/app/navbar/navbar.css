@@ -3,7 +3,7 @@
   top: 0;
   z-index: 50;
   background: var(--white);
-  border-bottom: 6px solid var(--blue-dark);
+  border-bottom: 6px solid var(--lime);
 }
 
 .navbar__inner {
@@ -17,15 +17,14 @@
 }
 
 .logo {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: var(--blue-dark);
-  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
 }
 
-.logo span {
-  color: var(--olive);
+.logo__image {
+  height: 40px;
+  width: auto;
+  display: block;
 }
 
 .nav-links {
@@ -36,12 +35,12 @@
 }
 
 .nav-links a {
-  color: var(--olive);
+  color: var(--ink);
   font-weight: 500;
 }
 
 .nav-links a:hover {
-  color: var(--olive-dark);
+  color: var(--olive);
 }
 
 .navbar__actions {
