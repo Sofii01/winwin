@@ -1,0 +1,21 @@
+<div class="category-card">
+  @if (imageOk()) {
+    <img
+      class="category-card__image"
+      [src]="category().image"
+      [alt]="'Categoría ' + category().name"
+      loading="lazy"
+      (error)="onImageError()"
+    />
+  }
+
+  <div class="category-card__scrim" aria-hidden="true"></div>
+
+  <div class="category-card__content">
+    <span class="eyebrow eyebrow--light">{{ category().eyebrow }}</span>
+    <h3 class="category-card__title">{{ category().name }}</h3>
+    <p class="category-card__desc">{{ category().description }}</p>
+  </div>
+
+  <ng-content />
+</div>

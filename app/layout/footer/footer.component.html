@@ -1,0 +1,149 @@
+<footer class="footer" id="legal">
+
+  <!-- ===================================================
+       ONDA VERDE DE TRANSICIÓN
+  ==================================================== -->
+
+  <div class="footer__wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 130" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- Azul: continúa el fondo de la sección de contacto -->
+      <path
+        class="footer__wave-blue"
+        d="M0,0 L1440,0 L1440,72
+           C1360,55 1240,37 1080,44
+           C900,52 740,62 520,62
+           C300,62 180,45 0,18 Z"
+      />
+
+      <!-- Franja verde -->
+      <path
+        class="footer__wave-lime"
+        d="M0,18
+           C180,45 300,62 520,62
+           C740,62 900,52 1080,44
+           C1240,37 1360,55 1440,72
+           L1440,96
+           C1360,79 1240,61 1080,68
+           C900,76 740,86 520,86
+           C300,86 180,69 0,42 Z"
+      />
+
+      <!-- Blanco: cuerpo del footer -->
+      <path
+        class="footer__wave-white"
+        d="M0,42
+           C180,69 300,86 520,86
+           C740,86 900,76 1080,68
+           C1240,61 1360,79 1440,96
+           L1440,130 L0,130 Z"
+      />
+
+    </svg>
+  </div>
+
+
+  <div class="footer__body">
+
+    <div class="footer__inner">
+
+      <div class="footer__col footer__col--brand">
+
+        <p class="logo logo--footer">WinWin<span>Dream</span></p>
+
+        <p class="footer__tagline">Conectando personas, impulsando sueños.</p>
+
+        <div class="socials" aria-label="Redes sociales">
+
+          @for (social of socials; track social.label) {
+
+            <a [href]="social.href" [attr.aria-label]="social.label">
+
+              <svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+
+                @switch (social.icon) {
+
+                  @case ('instagram') {
+                    <rect
+                      x="3"
+                      y="3"
+                      width="18"
+                      height="18"
+                      rx="5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                    <circle cx="17.2" cy="6.8" r="1.4" fill="currentColor" />
+                  }
+
+                  @case ('linkedin') {
+                    <path
+                      d="M6.94 9.2H4.06V20h2.88V9.2ZM5.5 4a1.75 1.75 0 1 0 0 3.5 1.75 1.75 0 0 0 0-3.5ZM20 20h-2.88v-5.25c0-1.32-.47-2.22-1.65-2.22-.9 0-1.44.61-1.67 1.2-.09.21-.11.5-.11.8V20h-2.88V9.2h2.88v1.32c.38-.59 1.07-1.43 2.6-1.43 1.9 0 3.71 1.24 3.71 3.91V20Z"
+                      fill="currentColor"
+                    />
+                  }
+
+                  @case ('email') {
+                    <rect
+                      x="3"
+                      y="5.5"
+                      width="18"
+                      height="13"
+                      rx="2.5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                    <path
+                      d="m4.5 8 7.5 5.5L19.5 8"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  }
+
+                }
+
+              </svg>
+
+            </a>
+
+          }
+
+        </div>
+
+      </div>
+
+      @for (column of columns; track column.title) {
+
+        <nav class="footer__col" [attr.aria-label]="column.title">
+          <h4>{{ column.title }}</h4>
+          @for (link of column.links; track link.label) {
+            <a [href]="link.href">{{ link.label }}</a>
+          }
+        </nav>
+
+      }
+
+    </div>
+
+
+    <div class="footer__bottom">
+      <hr />
+      <p>© {{ year }} WinWinDream. Todos los derechos reservados.</p>
+    </div>
+
+  </div>
+
+</footer>

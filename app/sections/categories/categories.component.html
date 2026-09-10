@@ -1,0 +1,19 @@
+<section class="categories" id="categorias">
+  <app-section-title title="Puedes colaborar en proyectos de tipo" align="center" />
+
+  <app-category-card [category]="active()">
+    <div class="dots dots--overlay" aria-label="Categorías disponibles">
+      @for (category of categories; track category.id; let i = $index) {
+        <button
+          type="button"
+          class="dot"
+          [class.dot--active]="i === activeIndex()"
+          [attr.aria-current]="i === activeIndex() ? 'true' : null"
+          (click)="select(i)"
+        >
+          <span class="visually-hidden">Ver categoría {{ category.name }}</span>
+        </button>
+      }
+    </div>
+  </app-category-card>
+</section>

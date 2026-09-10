@@ -1,0 +1,208 @@
+/* =========================================================
+   VALUES
+========================================================= */
+
+.values {
+  position: relative;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  background: var(--blue-dark);
+
+  padding: var(--section-padding);
+
+  --section-title-color: var(--white);
+  --section-text-color: var(--white);
+}
+
+
+/* =========================================================
+   CONTENEDOR
+========================================================= */
+
+.values__inner {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: var(--container);
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 56px;
+}
+
+
+/* =========================================================
+   GRID DE VALORES
+========================================================= */
+
+.values-grid {
+  position: relative;
+  z-index: 3;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+
+/* =========================================================
+   TARJETAS
+========================================================= */
+
+.value-card {
+  position: relative;
+  z-index: 4;
+
+  background: var(--white);
+
+  border-radius: 0 var(--radius-lg);
+
+  padding: 30px 24px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+
+.value-card h3 {
+  margin: 0;
+
+  color: var(--blue);
+
+  font-weight: 900;
+
+  font-size: 1.3rem;
+
+  line-height: 1.2;
+}
+
+
+.value-card p {
+  margin: 0;
+
+  color: var(--blue);
+
+  font-size: 0.95rem;
+
+  line-height: 1.5;
+}
+
+
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .values {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+/* =========================================================
+   MUÑECOS ENTRE VALUES Y ABOUT
+========================================================= */
+
+.people-divider {
+  position: relative;
+
+  width: 100%;
+  height: 100px;
+
+  margin-top: -45px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 10;
+}
+
+
+/* =========================================================
+   FRANJA VERDE CON BORDE SUPERIOR CURVO
+========================================================= */
+
+.people-divider::before {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  background: linear-gradient(
+    90deg,
+    #3d8b28 0%,
+    var(--olive) 50%,
+    var(--lime) 100%
+  );
+
+  /*
+   * Cuna: alto completo a la izquierda y 58% a la derecha.
+   * El 42% sale de medir la caida del borde superior en el asset
+   * (409 de 970 px de alto propio de la forma).
+   */
+  clip-path: polygon(0 0, 100% 42%, 100% 100%, 0 100%);
+
+  z-index: 0;
+}
+
+
+/* =========================================================
+   PERSONAS
+========================================================= */
+
+.people-divider__person {
+  position: relative;
+  z-index: 1;
+
+  /*
+   * 74x100 es el contorno real del muneco (viewBox 13 0 74 100),
+   * asi el alto de 100px del diseno es alto dibujado y no caja con aire.
+   * Sin margen negativo: las cajas ya se tocan justo por las manos.
+   */
+  width: 74px;
+  height: 100px;
+
+  flex: 0 0 74px;
+
+  display: block;
+
+  color: var(--white);
+  fill: var(--white);
+
+  opacity: 0.6;
+}

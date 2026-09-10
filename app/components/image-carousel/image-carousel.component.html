@@ -1,0 +1,42 @@
+<div class="carousel" role="region" [attr.aria-label]="ariaLabel()">
+  @for (image of images(); track image.src; let i = $index) {
+    @if (!isBroken(image.src)) {
+      <img
+        class="carousel__image"
+        [class.carousel__image--active]="i === activeIndex()"
+        [src]="image.src"
+        [alt]="image.alt"
+        [attr.aria-hidden]="i === activeIndex() ? null : 'true'"
+        [attr.loading]="i === 0 ? 'eager' : 'lazy'"
+        (error)="onImageError(image.src)"
+      />
+    }
+  }
+
+  @if (showControls() && count() > 1) {
+    <button type="button" class="carousel__control carousel__control--prev" (click)="previous()">
+      <span class="visually-hidden">Imagen anterior</span>
+      <span aria-hidden="true">&#8249;</span>
+    </button>
+    <button type="button" class="carousel__control carousel__control--next" (click)="next()">
+      <span class="visually-hidden">Imagen siguiente</span>
+      <span aria-hidden="true">&#8250;</span>
+    </button>
+  }
+
+  @if (showDots() && count() > 1) {
+    <div class="dots carousel__dots">
+      @for (image of images(); track image.src; let i = $index) {
+        <button
+          type="button"
+          class="dot"
+          [class.dot--active]="i === activeIndex()"
+          [attr.aria-current]="i === activeIndex() ? 'true' : null"
+          (click)="select(i)"
+        >
+          <span class="visually-hidden">Ir a la imagen {{ i + 1 }}</span>
+        </button>
+      }
+    </div>
+  }
+</div>

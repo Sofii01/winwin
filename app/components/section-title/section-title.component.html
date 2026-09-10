@@ -1,0 +1,9 @@
+@if (eyebrow()) {
+  <span class="eyebrow" [class.eyebrow--light]="light()">{{ eyebrow() }}</span>
+}
+
+<h2 class="section-title__heading">{{ title() }}</h2>
+
+@if (description()) {
+  <p class="section-title__desc">{{ description() }}</p>
+}

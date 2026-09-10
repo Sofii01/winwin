@@ -1,0 +1,89 @@
+<section class="values" id="valores">
+
+  <div class="values__inner">
+
+    <app-section-title
+      title="Los valores que nos impulsan en cada proyecto"
+      description="Adoptamos 6 principios que definen cómo pensamos, actuamos y nos relacionamos con nuestros creadores, voluntarios, inversores y comunidad."
+      align="center"
+    />
+
+    <div class="values-grid">
+
+      @for (value of values; track value.id) {
+
+        <article class="value-card">
+
+          <h3>{{ value.title }}</h3>
+
+          <p>{{ value.description }}</p>
+
+        </article>
+
+      }
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     MUÑECOS - TRANSICIÓN ENTRE VALUES Y ABOUT
+===================================================== -->
+
+<div class="people-divider" aria-hidden="true">
+
+  @for (person of peopleTop; track $index) {
+
+    <svg
+      class="people-divider__person"
+      viewBox="13 0 74 100"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+
+      <circle
+        cx="50"
+        cy="10"
+        r="10"
+      />
+
+      <path
+        d="M50 25
+           C42 25 36 31 36 39
+           L36 62
+           L29 91
+           C28 96 31 99 35 99
+           C38 99 40 97 41 93
+           L48 68
+           L52 68
+           L59 93
+           C60 97 62 99 65 99
+           C69 99 72 96 71 91
+           L64 62
+           L64 39
+           C64 31 58 25 50 25Z"
+      />
+
+      <path
+        d="M39 34 L17 7"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="7"
+        stroke-linecap="round"
+      />
+
+      <path
+        d="M61 34 L83 7"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="7"
+        stroke-linecap="round"
+      />
+
+    </svg>
+
+  }
+
+</div>

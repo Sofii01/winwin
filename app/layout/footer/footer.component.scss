@@ -1,0 +1,185 @@
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+  background: var(--white);
+  color: var(--ink);
+}
+
+/* =========================================================
+   ONDA DE TRANSICIÓN
+   El azul reproduce el final de la sección de contacto,
+   así que la onda va a sangre y sin padding lateral.
+========================================================= */
+
+.footer__wave {
+  line-height: 0;
+}
+
+.footer__wave svg {
+  display: block;
+
+  width: 100%;
+  height: 130px;
+}
+
+.footer__wave-blue {
+  fill: var(--blue);
+}
+
+.footer__wave-lime {
+  fill: var(--lime);
+}
+
+.footer__wave-white {
+  fill: var(--white);
+}
+
+/* =========================================================
+   CUERPO
+========================================================= */
+
+.footer__body {
+  padding: 24px 24px 32px;
+}
+
+.footer__inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  h4 {
+    color: var(--blue);
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  a {
+    color: #4a4a4a;
+    font-size: 0.95rem;
+
+    &:hover {
+      color: var(--blue);
+    }
+  }
+}
+
+.footer__col--brand {
+  gap: 16px;
+}
+
+.footer__tagline {
+  color: #4a4a4a;
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   LOGO
+   En el footer los colores van al revés que en la navbar:
+   "WinWin" en verde y "Dream" en azul.
+========================================================= */
+
+.logo--footer {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.85rem;
+
+  color: var(--olive);
+
+  span {
+    color: var(--blue);
+  }
+}
+
+/* =========================================================
+   REDES
+========================================================= */
+
+.socials {
+  display: flex;
+  gap: 12px;
+
+  a {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 6px;
+
+    background: var(--grey);
+    color: var(--white);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background: var(--blue);
+    }
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+}
+
+/* =========================================================
+   PIE
+========================================================= */
+
+.footer__bottom {
+  max-width: var(--container);
+  margin: 56px auto 0;
+
+  hr {
+    border: none;
+    border-top: 1px solid #d9d9d9;
+    margin-bottom: 28px;
+  }
+
+  p {
+    text-align: center;
+    color: var(--grey);
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+  .footer__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer__wave svg {
+    height: 90px;
+  }
+}
+
+@media (max-width: 720px) {
+  .footer__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__wave svg {
+    height: 60px;
+  }
+}

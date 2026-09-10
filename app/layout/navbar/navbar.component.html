@@ -1,0 +1,39 @@
+<header class="navbar">
+  <div class="navbar__inner">
+    <a href="#inicio" class="logo" (click)="closeMenu()">WinWin<span>Dream</span></a>
+
+    <nav class="nav-links" aria-label="Navegación principal">
+      @for (link of links; track link.href) {
+        <a [href]="link.href">{{ link.label }}</a>
+      }
+    </nav>
+
+    <div class="navbar__actions">
+      <a href="#contacto" class="btn btn--outline btn--sm">Publicar proyecto</a>
+      <a href="#proyectos" class="btn btn--primary btn--sm">Explorar oportunidades</a>
+    </div>
+
+    <button
+      type="button"
+      class="navbar__toggle"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="navbar-mobile"
+      (click)="toggleMenu()"
+    >
+      <span class="visually-hidden">Abrir menú</span>
+      <span class="navbar__bars" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  @if (menuOpen()) {
+    <nav id="navbar-mobile" class="navbar__mobile" aria-label="Navegación móvil">
+      @for (link of links; track link.href) {
+        <a [href]="link.href" (click)="closeMenu()">{{ link.label }}</a>
+      }
+      <a href="#contacto" class="btn btn--outline btn--sm" (click)="closeMenu()">Publicar proyecto</a>
+      <a href="#proyectos" class="btn btn--primary btn--sm" (click)="closeMenu()">
+        Explorar oportunidades
+      </a>
+    </nav>
+  }
+</header>
