@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { ContactRequest, ContactStatus } from '../../models/contact.model';
-import { ContactService } from '../../services/contact.service';
+import { ContactRequest, ContactStatus } from '../shared/contact/contact.model';
+import { ContactService } from '../shared/contact/contact.service';
 
 @Component({
   selector: 'app-contact',
   imports: [ReactiveFormsModule],
-  templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss',
+  templateUrl: './contact.html',
+  styleUrl: './contact.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactComponent {

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { CarouselImage } from '../../components/image-carousel/image-carousel.component';
+import { CarouselImage } from '../shared/image-carousel/image-carousel.model';
 
 interface AboutPillar {
   id: string;
@@ -10,8 +10,8 @@ interface AboutPillar {
 
 @Component({
   selector: 'app-about-winwin',
-  templateUrl: './about-winwin.component.html',
-  styleUrl: './about-winwin.component.scss',
+  templateUrl: './about-winwin.html',
+  styleUrl: './about-winwin.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AboutWinwinComponent {

@@ -1,12 +1,13 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+
+import { AboutWinwinComponent } from './about-winwin/about-winwin';
+import { HowItWorksComponent } from './how-it-works/how-it-works';
+import { ContactComponent } from './contact/contact';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [AboutWinwinComponent, HowItWorksComponent, ContactComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('winwin');
-}
+export class App {}
