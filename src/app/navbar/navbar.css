@@ -32,15 +32,16 @@
   flex: 1;
   justify-content: center;
   gap: 40px;
+ 
 }
 
 .nav-links a {
-  color: var(--ink);
+  color: var(--olive );
   font-weight: 500;
 }
 
 .nav-links a:hover {
-  color: var(--olive);
+  color: var(--lime);
 }
 
 .navbar__actions {
