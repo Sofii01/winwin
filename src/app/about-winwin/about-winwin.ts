@@ -39,8 +39,8 @@ export class AboutWinwinComponent {
   ];
 
   protected readonly images: readonly CarouselImage[] = [
-    { src: 'assets/images/hero/about-taller.jpg.png', alt: 'Taller comunitario en marcha' },
-    { src: 'assets/images/hero/about-comunidad.jpg.png', alt: 'Comunidad presentando su proyecto' },
-    { src: 'assets/images/hero/about-equipo.jpg.png', alt: 'Equipo de WinWin Dream trabajando' },
+    { src: 'assests/about-taller.jpg.png', alt: 'Taller comunitario en marcha' },
+    { src: 'assests/about-comunidad.jpg.png', alt: 'Comunidad presentando su proyecto' },
+    { src: 'assests/about-equipo.jpg.png', alt: 'Equipo de WinWin Dream trabajando' },
   ];
 }
