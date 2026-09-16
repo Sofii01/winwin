@@ -1,0 +1,116 @@
+<section class="hero">
+  <div class="hero__media" aria-hidden="true"></div>
+
+  <div class="hero__carousel" aria-hidden="true">
+    @for (image of images; track $index) {
+      <div
+        class="hero__slide"
+        [class.hero__slide--active]="$index === activeIndex()"
+        [style.backgroundImage]="image ? 'url(\'' + image + '\')' : null"
+      ></div>
+    }
+  </div>
+
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <h1>
+      Donde las ideas encuentran<br>
+      <em>quién las haga crecer desde</em><br>
+      cualquier lugar de Latam
+    </h1>
+
+    <div class="hero__ctas">
+      <a href="#explorar" class="btn btn--primary">Explorar oportunidades</a>
+      <a href="#publicar" class="btn btn--ghost">Publicar proyecto</a>
+    </div>
+
+    <p class="hero__desc">
+      WinWin Dream es el puente solidario entre quienes tienen ideas de impacto y quienes quieren
+      ayudar: colaborando, donando o siendo voluntarios, con total transparencia para las comunidades
+      de Latinoamérica.
+    </p>
+  </div>
+
+  <div class="dots hero__dots" role="tablist" aria-label="Selector de imágenes del hero">
+    @for (image of images; track $index) {
+      <button
+        type="button"
+        class="hero__dot"
+        [class.hero__dot--active]="$index === activeIndex()"
+        [attr.aria-label]="'Ir a la imagen ' + ($index + 1)"
+        (click)="goTo($index)"
+      ></button>
+    }
+  </div>
+</section>
+
+
+<section class="favorites" id="proyectos">
+  <div class="favorites__inner">
+    <div class="favorites__heading">
+      <h2>Proyectos que acompañamos</h2>
+      <div class="tabs">
+        @for (tab of tabs; track tab.label) {
+          <button
+            type="button"
+            class="tab"
+            [class.tab--active]="tab.active"
+            (click)="selectTab(tab)"
+          >{{ tab.label }}</button>
+        }
+      </div>
+    </div>
+
+    <div class="cards-carousel">
+      <div class="favorites__people" aria-hidden="true">
+        @for (i of peopleRow; track i) {
+          <img src="assests/bi_person-arms-up.png" alt="" class="favorites__person">
+        }
+      </div>
+
+      <button
+        type="button"
+        class="carousel-arrow carousel-arrow--prev"
+        aria-label="Proyecto anterior"
+        (click)="prevPage()"
+      >‹</button>
+
+      <div class="cards-row">
+        @for (card of cards; track card.title + card.tag) {
+          <article class="project-card">
+            <span class="project-card__tag" [class]="'project-card__tag--' + card.tone">{{ card.tag }}</span>
+            <img class="project-card__image" [src]="card.image" [alt]="card.title">
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.description }}</p>
+            <div class="progress">
+              <div class="progress__bar" [style.width.%]="card.progressPercent"></div>
+            </div>
+            <div class="project-card__stats">
+              <span class="raised">{{ card.raised }}</span>
+              <span class="goal">{{ card.goal }}</span>
+            </div>
+            <hr>
+            <div class="project-card__meta">
+              <span>{{ card.investors }} inversores</span>
+              <span>{{ card.daysLeft }} días restantes</span>
+            </div>
+          </article>
+        }
+      </div>
+
+      <button
+        type="button"
+        class="carousel-arrow carousel-arrow--next"
+        aria-label="Siguiente proyecto"
+        (click)="nextPage()"
+      >›</button>
+    </div>
+
+    <div class="dots" role="tablist" aria-label="Paginación de proyectos">
+      @for (dot of pageDots; track dot) {
+        <span class="dot" [class.dot--active]="dot === activePage"></span>
+      }
+    </div>
+  </div>
+</section>

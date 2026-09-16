@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
-import { AboutWinwinComponent } from './about-winwin/about-winwin';
-import { HowItWorksComponent } from './how-it-works/how-it-works';
-import { ContactComponent } from './contact/contact';
+import { NavbarComponent } from './navbar/navbar';
+import { CookieBannerComponent } from './cookie-banner/cookie-banner';
 
 @Component({
   selector: 'app-root',
-  imports: [AboutWinwinComponent, HowItWorksComponent, ContactComponent],
+  imports: [RouterOutlet, NavbarComponent, CookieBannerComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
 })
 export class App {}
