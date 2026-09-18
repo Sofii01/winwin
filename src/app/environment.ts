@@ -4,3 +4,4 @@ export const environment = {
   production: false,
   sheetsUrl: typeof __SHEETS_URL__ !== 'undefined' ? __SHEETS_URL__ : '',
 };
+
