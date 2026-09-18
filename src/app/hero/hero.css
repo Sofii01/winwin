@@ -94,7 +94,8 @@
 }
 
 .btn--ghost {
-  border: 1px solid var(--white);
+  border: 1px solid var(--grey-light);
+  border-radius: 10px;
   color: var(--white);
 }
 
@@ -143,6 +144,7 @@
   background: var(--lime);
   padding: 96px 24px 72px;
   overflow: hidden;
+  scroll-margin-top: 90px;
 }
 
 .favorites__inner {

@@ -8,3 +8,8 @@ export interface ContactRequest {
 }
 
 export type ContactStatus = 'idle' | 'sending' | 'success' | 'error';
+
+export interface ContactResponse {
+  ok: boolean;
+  message: string;
+}
