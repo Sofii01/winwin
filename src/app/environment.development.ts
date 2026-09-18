@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  googleSheetsUrl: 'PEGA_AQUI_LA_URL_DEL_APPS_SCRIPT',
+  googleSheetsUrl: 'https://script.google.com/macros/s/AKfycbxYH6gMnqpYXIhcZecuKbJDwwVgWPToUmJipZ8Qx53HW2UfhKjAO2NFBSFmetemwn3ESQ/exec',
 };
