@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit, PLATFORM_ID, inject, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+
+const AUTOPLAY_INTERVAL_MS = 5000;
 
 interface Category {
   title: string;
@@ -44,12 +47,30 @@ const CATEGORIES: Category[] = [
   templateUrl: './categories.html',
   styleUrl: './categories.css',
 })
-export class CategoriesComponent {
+export class CategoriesComponent implements OnInit, OnDestroy {
+  private readonly platformId = inject(PLATFORM_ID);
+  private intervalId?: ReturnType<typeof setInterval>;
+
   protected readonly categories = CATEGORIES;
   protected readonly pageDots = CATEGORIES.map((_, index) => index);
-  protected activePage = 0;
+  protected readonly activePage = signal(0);
+
+  ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+    this.intervalId = setInterval(() => this.next(), AUTOPLAY_INTERVAL_MS);
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.intervalId);
+  }
 
   protected selectPage(index: number): void {
-    this.activePage = index;
+    this.activePage.set(index);
+  }
+
+  private next(): void {
+    this.activePage.set((this.activePage() + 1) % this.categories.length);
   }
 }

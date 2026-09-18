@@ -85,6 +85,7 @@
 
 .dots--overlay {
   position: absolute;
-  top: 250px;
-  left: 65px;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
 }

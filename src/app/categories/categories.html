@@ -3,13 +3,13 @@
 
   <div
     class="categories__banner"
-    [style.backgroundImage]="'url(' + categories[activePage].image + ')'"
+    [style.backgroundImage]="'url(' + categories[activePage()].image + ')'"
   >
     <div class="categories__scrim" aria-hidden="true"></div>
     <div class="categories__content">
       <span class="eyebrow eyebrow--light">Categorías de WinWin Dream</span>
-      <h3>{{ categories[activePage].title }}</h3>
-      <p>{{ categories[activePage].description }}</p>
+      <h3>{{ categories[activePage()].title }}</h3>
+      <p>{{ categories[activePage()].description }}</p>
     </div>
 
     <div class="dots dots--overlay" role="tablist" aria-label="Paginación de categorías">
@@ -17,7 +17,7 @@
         <button
           type="button"
           class="dot"
-          [class.dot--active]="dot === activePage"
+          [class.dot--active]="dot === activePage()"
           [attr.aria-label]="categories[dot].title"
           (click)="selectPage(dot)"
         ></button>
