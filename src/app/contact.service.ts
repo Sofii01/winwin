@@ -15,7 +15,6 @@ interface AppsScriptResponse {
 export class ContactService {
   private readonly http = inject(HttpClient);
 
-
   private readonly endpoint = environment.sheetsUrl;
 
   submit(request: ContactRequest): Observable<ContactResponse> {
