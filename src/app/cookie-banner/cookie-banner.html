@@ -1,0 +1,93 @@
+@if (isVisible()) {
+  <div class="cookie-banner" role="dialog" aria-label="Aviso de cookies">
+    <div class="cookie-banner__row">
+      <span class="cookie-banner__badge" aria-hidden="true">
+        <img class="cookie-banner__badge-img" src="assests/Frame 1 (1).png" alt="">
+      </span>
+      <p class="cookie-banner__text">
+        Usamos cookies propias y de terceros para mejorar tu experiencia y medir el uso de la plataforma.
+        Podes aceptar, rechazar o configurar tus preferencias en cualquier momento. Más Info en nuestra
+        <a routerLink="/politica-de-privacidad" class="cookie-banner__link">Política de Cookies</a>.
+      </p>
+    </div>
+
+    <div class="cookie-banner__actions">
+      <button type="button" class="cookie-btn cookie-btn--ghost" (click)="openPreferences()">Configurar</button>
+      <button type="button" class="cookie-btn cookie-btn--ghost" (click)="rejectAll()">Rechazar</button>
+      <button type="button" class="cookie-btn cookie-btn--solid" (click)="acceptAll()">Aceptar</button>
+    </div>
+  </div>
+}
+
+@if (isPreferencesOpen()) {
+  <div class="cookie-modal__overlay" (click)="closePreferences()">
+    <div
+      class="cookie-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Configurar preferencias de cookies"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="cookie-modal__head">
+        <h2>Preferencias de cookies</h2>
+        <button type="button" class="cookie-modal__close" aria-label="Cerrar" (click)="closePreferences()">✕</button>
+      </div>
+
+      <p class="cookie-modal__desc">
+        Elegí qué categorías de cookies querés permitir. Las necesarias siempre están activas porque
+        hacen funcionar la plataforma.
+      </p>
+
+      <div class="cookie-modal__row">
+        <div class="cookie-modal__row-text">
+          <h3>Necesarias</h3>
+          <p>Imprescindibles para el funcionamiento del sitio.</p>
+        </div>
+        <span
+          class="cookie-toggle cookie-toggle--on cookie-toggle--locked"
+          role="switch"
+          aria-checked="true"
+          aria-label="Cookies necesarias (siempre activas)"
+        ></span>
+      </div>
+
+      <div class="cookie-modal__row">
+        <div class="cookie-modal__row-text">
+          <h3>Analíticas</h3>
+          <p>Nos ayudan a entender cómo se usa la plataforma.</p>
+        </div>
+        <button
+          type="button"
+          class="cookie-toggle"
+          [class.cookie-toggle--on]="analyticsEnabled()"
+          role="switch"
+          [attr.aria-checked]="analyticsEnabled()"
+          aria-label="Cookies analíticas"
+          (click)="toggleAnalytics()"
+        ></button>
+      </div>
+
+      <div class="cookie-modal__row">
+        <div class="cookie-modal__row-text">
+          <h3>Marketing</h3>
+          <p>Permiten mostrarte contenido relevante en otras plataformas.</p>
+        </div>
+        <button
+          type="button"
+          class="cookie-toggle"
+          [class.cookie-toggle--on]="marketingEnabled()"
+          role="switch"
+          [attr.aria-checked]="marketingEnabled()"
+          aria-label="Cookies de marketing"
+          (click)="toggleMarketing()"
+        ></button>
+      </div>
+
+      <div class="cookie-modal__actions">
+        <button type="button" class="cookie-btn cookie-btn--ghost" (click)="rejectAll()">Rechazar todas</button>
+        <button type="button" class="cookie-btn cookie-btn--ghost" (click)="acceptAll()">Aceptar todas</button>
+        <button type="button" class="cookie-btn cookie-btn--solid" (click)="savePreferences()">Guardar preferencias</button>
+      </div>
+    </div>
+  </div>
+}

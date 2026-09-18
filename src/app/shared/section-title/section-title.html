@@ -1,0 +1,10 @@
+<div
+  class="section-title"
+  [class.section-title--center]="align() === 'center'"
+  [class.section-title--right]="align() === 'right'"
+  [class.section-title--light]="light()"
+>
+  <span class="section-title__eyebrow">{{ eyebrow() }}</span>
+  <h2 class="section-title__title">{{ title() }}</h2>
+  <p class="section-title__description">{{ description() }}</p>
+</div>
