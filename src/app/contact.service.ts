@@ -24,9 +24,7 @@ export class ContactService {
       );
     }
 
-    // Apps Script no responde al preflight OPTIONS que dispara un
-    // Content-Type "application/json". Mandando el JSON como texto plano
-    // el navegador la trata como petición simple y no hay preflight.
+
     return this.http
       .post<AppsScriptResponse>(this.endpoint, JSON.stringify(request), {
         headers: new HttpHeaders({ 'Content-Type': 'text/plain;charset=utf-8' }),
