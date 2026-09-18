@@ -1,0 +1,36 @@
+.section-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--light {
+    .section-title__eyebrow,
+    .section-title__title,
+    .section-title__description {
+      color: #fff;
+    }
+  }
+}
+
+.section-title__eyebrow {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.section-title__title {
+  margin: 0;
+}
+
+.section-title__description {
+  margin: 0;
+}

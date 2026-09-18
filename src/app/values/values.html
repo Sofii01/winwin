@@ -1,0 +1,41 @@
+<section class="values">
+  <img class="values__shape values__shape--green" src="assests/Verde Sin fondo 1.png" alt="" aria-hidden="true">
+  <img class="values__shape values__shape--white" src="assests/Sin fondo 1.png" alt="" aria-hidden="true">
+
+  <div class="values__inner">
+    <div class="values__heading-row">
+      <div class="values__people values__people--gray" aria-hidden="true">
+        @for (i of peopleRow; track i) {
+          <img src="assests/bi_person-arms-up.png" alt="" class="values__person">
+        }
+      </div>
+
+      <div class="values__heading">
+        <h2>Los valores que nos impulsan en cada proyecto</h2>
+        <p>
+          Adoptamos 6 principios que nos definen como pensamos, actuamos y nos relacionamos con
+          nuestros creadores, voluntarios, inversores y comunidad.
+        </p>
+      </div>
+    </div>
+
+    <div class="values-grid">
+      @for (value of values; track value.title) {
+        <div class="value-card">
+          <div class="value-card__head">
+             <img class="value-card__icon" [src]="value.icon" [alt]="value.title">
+            <h3>{{ value.title }}</h3>
+           
+          </div>
+          <p>{{ value.description }}</p>
+        </div>
+      }
+    </div>
+
+    <div class="values__people values__people--end" aria-hidden="true">
+      @for (i of peopleRow; track i) {
+        <img src="assests/bi_person-arms-up.png" alt="" class="values__person">
+      }
+    </div>
+  </div>
+</section>
