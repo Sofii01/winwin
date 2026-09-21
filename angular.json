@@ -36,7 +36,9 @@
             "security": {
               "allowedHosts": [
                 "localhost",
-                "*.up.railway.app"
+                "*.up.railway.app",
+                "winwindream.com",
+                "*.winwindream.com"
               ]
             }
           },
