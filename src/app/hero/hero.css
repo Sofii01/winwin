@@ -1,124 +1,432 @@
-<section class="hero">
-  <div class="hero__media" aria-hidden="true"></div>
+.hero {
+  --hero-curve-w: 95%;
+  --hero-curve-h: 100%;
 
-  <div class="hero__carousel" aria-hidden="true">
-    @for (image of images; track $index) {
-      <div
-        class="hero__slide"
-        [class.hero__slide--active]="$index === activeIndex()"
-        [style.backgroundImage]="image ? 'url(\'' + image + '\')' : null"
-      ></div>
-    }
-  </div>
+  position: relative;
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: var(--white);
+  background-color: var(--blue-dark);
+}
 
-  <div class="hero__scrim" aria-hidden="true"></div>
+.hero__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue) 60%, var(--olive-dark));
+}
 
-  <div class="hero__content">
-    <h1>
-      Donde las ideas encuentran<br>
-      <em>quién las haga crecer desde</em><br>
-      cualquier lugar de Latam
-    </h1>
+.hero__carousel {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
 
-    <div class="hero__ctas">
-      <a href="#proyectos" class="btn btn--primary">Explorar oportunidades</a>
-      <a href="#contacto" class="btn btn--ghost">Publicar proyecto</a>
-    </div>
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
 
-    <p class="hero__desc">
-      WinWin Dream es el puente solidario entre quienes tienen ideas de impacto y quienes quieren
-      ayudar: colaborando, donando o siendo voluntarios, con total transparencia para las comunidades
-      de Latinoamérica.
-    </p>
-  </div>
+.hero__slide--active {
+  opacity: 1;
+}
 
-  <div class="dots hero__dots" role="tablist" aria-label="Selector de imágenes del hero">
-    @for (image of images; track $index) {
-      <button
-        type="button"
-        class="hero__dot"
-        [class.hero__dot--active]="$index === activeIndex()"
-        [attr.aria-label]="'Ir a la imagen ' + ($index + 1)"
-        (click)="goTo($index)"
-      ></button>
-    }
-  </div>
-</section>
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.hero h1 {
+  max-width: 620px;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.hero h1 em {
+  color: var(--lime);
+  font-style: italic;
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.hero .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.hero .btn--primary {
+  background: var(--blue-dark);
+  color: var(--white);
+}
+
+.hero .btn--primary:hover {
+  background: var(--blue);
+}
+
+.btn--ghost {
+  border: 1px solid var(--grey-light);
+  border-radius: 10px;
+  color: var(--white);
+}
+
+.btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.hero__desc {
+  max-width: 600px;
+  font-weight: 700;
+}
+
+.hero__dots {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.hero__dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.hero__dot--active {
+  background: var(--olive);
+}
 
 
-<div class="wave-transition" aria-hidden="true">
-  <svg class="wave-transition__shape" viewBox="0 0 1440 1179" preserveAspectRatio="none" focusable="false">
-    <rect class="wave-transition__sky" fill="#00317a" width="1440" height="1179"></rect>
-    <path class="wave-transition__band" fill="#ffffff" d="M0 726.5C0.8 726 3.3 724.5 5 723.5C6.7 722.5 8.3 721.5 10 720.5C11.7 719.6 10.8 720.1 15 717.7C19.2 715.4 22.5 712.8 35 706.5C47.5 700.1 71.7 687.9 90 679.8C108.3 671.7 126.7 664.4 145 657.8C163.3 651.1 185 644.3 200 639.8C215 635.3 222.5 633.7 235 630.8C247.5 627.9 266.7 624 275 622.3C283.3 620.5 282.5 620.8 285 620.3C287.5 619.8 286.7 620 290 619.4C293.3 618.8 293.3 618.4 305 616.5C316.7 614.7 339.2 611 360 608.2C380.8 605.4 405.8 602.3 430 599.7C454.2 597.2 480 594.9 505 592.9C530 590.9 550 589.5 580 587.6C610 585.8 641.7 584.1 685 581.8C728.3 579.5 806.7 575.5 840 573.7C873.3 571.9 865.8 572.5 885 571.3C904.2 570.1 917.5 569.6 955 566.5C992.5 563.3 1060 558.6 1110 552.3C1160 546 1218.3 535.4 1255 528.5C1291.7 521.6 1309.2 516.3 1330 510.9C1350.8 505.5 1368.3 499.6 1380 495.9C1391.7 492.3 1395.8 490.5 1400 489C1404.2 487.6 1403.3 487.9 1405 487.3C1406.7 486.7 1408.3 486 1410 485.4C1411.7 484.8 1410 485.3 1415 483.5C1420 481.6 1435.8 475.7 1440 474.1V1179H0Z"></path>
-    <path class="wave-transition__field" fill="#a3e635" d="M0 743.9C1.7 742.9 7.5 739.6 10 738.2C12.5 736.7 12.5 736.7 15 735.3C17.5 733.9 20.8 732 25 729.8C29.2 727.5 28.3 727.3 40 721.7C51.7 716 77.5 703.4 95 695.9C112.5 688.4 131.7 681.5 145 676.7C158.3 672 169.2 669.1 175 667.3C180.8 665.5 177.5 666.5 180 665.7C182.5 664.9 169.2 667.3 190 662.6C210.8 658 252.5 645.4 305 637.8C357.5 630.1 405.8 622.9 505 616.7C604.2 610.5 799.2 605.7 900 600.5C1000.8 595.2 1052.5 591.2 1110 585.4C1167.5 579.6 1206.7 572.6 1245 565.5C1283.3 558.5 1322.5 547.4 1340 543.2C1357.5 538.9 1347.5 540.9 1350 540.1C1352.5 539.4 1350.8 540 1355 538.7C1359.2 537.4 1368.3 534.5 1375 532.4C1381.7 530.2 1390.8 527.2 1395 525.8C1399.2 524.3 1398.3 524.5 1400 523.9C1401.7 523.3 1402.5 523 1405 522.1C1407.5 521.2 1409.2 520.7 1415 518.5C1420.8 516.3 1435.8 510.5 1440 508.9V1179H0Z"></path>
-  </svg>
-</div>
+.hero__media,
+.hero__carousel,
+.hero__slide,
+.hero__scrim {
+  clip-path: ellipse(var(--hero-curve-w) var(--hero-curve-h) at 50% 0%);
+}
 
-<section class="favorites" id="proyectos">
-  <div class="favorites__inner">
-    <div class="favorites__heading">
-      <h2>Proyectos que acompañamos</h2>
-      <div class="tabs">
-        @for (tab of tabs; track tab.label) {
-          <button
-            type="button"
-            class="tab"
-            [class.tab--active]="tab.active"
-            (click)="selectTab(tab)"
-          >{{ tab.label }}</button>
-        }
-      </div>
-    </div>
 
-    <div class="cards-carousel">
-      <div class="favorites__people" aria-hidden="true">
-        @for (i of peopleRow; track i) {
-          <img src="assests/bi_person-arms-up.png" alt="" class="favorites__person">
-        }
-      </div>
+@media (max-width: 720px) {
+  .hero {
+    --hero-curve-w: 150%;
+  }
+}
 
-      <button
-        type="button"
-        class="carousel-arrow carousel-arrow--prev"
-        aria-label="Proyecto anterior"
-        (click)="prevPage()"
-      >‹</button>
 
-      <div class="cards-row">
-        @for (card of cards; track card.title + card.tag) {
-          <article class="project-card">
-            <span class="project-card__tag" [class]="'project-card__tag--' + card.tone">{{ card.tag }}</span>
-            <img class="project-card__image" [src]="card.image" [alt]="card.title">
-            <h3>{{ card.title }}</h3>
-            <p>{{ card.description }}</p>
-            <div class="progress">
-              <div class="progress__bar" [style.width.%]="card.progressPercent"></div>
-            </div>
-            <div class="project-card__stats">
-              <span class="raised">{{ card.raised }}</span>
-              <span class="goal">{{ card.goal }}</span>
-            </div>
-            <hr>
-            <div class="project-card__meta">
-              <span>{{ card.investors }} inversores</span>
-              <span>{{ card.daysLeft }} días restantes</span>
-            </div>
-          </article>
-        }
-      </div>
+.wave-transition {
+  --wave-width: 142.361%;
+  --wave-left: -14.583%;
+  --wave-top: -53%;
+  --wave-strip: 22%;
+  --wave-lift: -16%;
 
-      <button
-        type="button"
-        class="carousel-arrow carousel-arrow--next"
-        aria-label="Siguiente proyecto"
-        (click)="nextPage()"
-      >›</button>
-    </div>
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 0;
+  padding-bottom: var(--wave-strip);
+  margin-bottom: var(--wave-lift);
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--blue-dark);
+}
 
-    <div class="dots" role="tablist" aria-label="Paginación de proyectos">
-      @for (dot of pageDots; track dot) {
-        <span class="dot" [class.dot--active]="dot === activePage"></span>
-      }
-    </div>
-  </div>
-</section>
+.wave-transition__shape {
+  position: absolute;
+  top: 0;
+  left: var(--wave-left);
+  display: block;
+  width: var(--wave-width);
+  height: auto;
+  aspect-ratio: 1440 / 1179;
+  margin-top: var(--wave-top);
+  opacity: 1;
+}
+
+
+.wave-transition__sky { fill: var(--blue-dark); }
+.wave-transition__band { fill: var(--white); }
+.wave-transition__field { fill: var(--lime); }
+
+@media (max-width: 720px) {
+  .wave-transition {
+    --wave-width: 115%;
+    --wave-left: -7.5%;
+    --wave-top: -39%;
+    --wave-strip: 24%;
+    --wave-lift: -15%;
+  }
+}
+
+.favorites {
+  position: relative;
+  background: var(--lime);
+  padding: 96px 24px 72px;
+  overflow: hidden;
+  scroll-margin-top: 90px;
+}
+
+.favorites__inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.favorites__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.favorites__heading h2 {
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: italic;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  margin: 0;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.tab {
+  padding: 12px 18px;
+  border-radius: 5px;
+  border: 1px solid var(--blue-dark);
+  background: transparent;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.tab--active {
+  background: var(--blue-dark);
+  font-weight: 700;
+}
+
+.cards-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.favorites__people {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.favorites__person {
+  width: 75px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.carousel-arrow {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  background-size: 36px 36px;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: var(--white);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.cards-row {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.project-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+}
+
+.project-card__tag {
+  font-weight: 900;
+  font-size: 1.3rem;
+}
+
+.project-card__tag--sustentable {
+  color: var(--olive);
+}
+
+.project-card__tag--inversion {
+  color: var(--olive);
+}
+
+.project-card__tag--donacion {
+  color: var(--olive);
+}
+
+.project-card__image {
+  display: block;
+  width: 100%;
+  height: 200px;
+  border-radius: 0 var(--radius-lg);
+  object-fit: cover;
+  background: linear-gradient(160deg, var(--steel-blue), var(--blue));
+}
+
+.project-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--blue);
+  font-weight: 500;
+  margin: 0;
+}
+
+.project-card p {
+  font-size: 0.9rem;
+  color: var(--blue);
+  font-weight: 300;
+  margin: 0;
+}
+
+.progress {
+  height: 12px;
+  border-radius: 20px;
+  background: var(--grey-light);
+  overflow: hidden;
+}
+
+.progress__bar {
+  height: 100%;
+  border-radius: 20px;
+  background: var(--lime-soft);
+  border-right: 4px solid var(--olive);
+}
+
+.project-card__stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.project-card__stats .raised {
+  color: var(--olive);
+}
+
+.project-card__stats .goal {
+  color: var(--blue);
+}
+
+.project-card hr {
+  border: none;
+  border-top: 1px solid var(--blue);
+  opacity: 0.3;
+}
+
+.project-card__meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--grey);
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--white);
+}
+
+.dot--active {
+  background: var(--olive);
+}
+
+@media (max-width: 1100px) {
+  .cards-row {
+    grid-template-columns: 1fr;
+  }
+
+  .carousel-arrow {
+    display: none;
+  }
+}
