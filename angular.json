@@ -32,6 +32,12 @@
             "outputMode": "server",
             "ssr": {
               "entry": "src/server.ts"
+            },
+            "security": {
+              "allowedHosts": [
+                "localhost",
+                "*.up.railway.app"
+              ]
             }
           },
           "configurations": {
