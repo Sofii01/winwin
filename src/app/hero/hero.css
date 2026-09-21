@@ -1,4 +1,7 @@
 .hero {
+  --hero-curve-w: 95%;
+  --hero-curve-h: 100%;
+
   position: relative;
   min-height: 640px;
   display: flex;
@@ -132,11 +135,63 @@
   background: var(--olive);
 }
 
+
 .hero__media,
 .hero__carousel,
 .hero__slide,
 .hero__scrim {
-  border-radius: 0 0 50% 50% / 0 0 20% 20%;
+  clip-path: ellipse(var(--hero-curve-w) var(--hero-curve-h) at 50% 0%);
+}
+
+
+@media (max-width: 720px) {
+  .hero {
+    --hero-curve-w: 150%;
+  }
+}
+
+.wave-transition {
+  --wave-width: 142.361%;
+  --wave-left: -14.583%;
+  --wave-top: -53%;
+  --wave-strip: 22%;
+  --wave-lift: -16%;
+
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 0;
+  padding-bottom: var(--wave-strip);
+  margin-bottom: var(--wave-lift);
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--blue-dark);
+}
+
+.wave-transition__shape {
+  position: absolute;
+  top: 0;
+  left: var(--wave-left);
+  display: block;
+  width: var(--wave-width);
+  height: auto;
+  aspect-ratio: 1440 / 1179;
+  margin-top: var(--wave-top);
+  opacity: 1;
+}
+
+.wave-transition__sky { fill: var(--blue-dark); }
+.wave-transition__band { fill: var(--white); }
+.wave-transition__field { fill: var(--lime); }
+
+@media (max-width: 720px) {
+  .wave-transition {
+    --wave-width: 115%;
+    --wave-left: -7.5%;
+    --wave-top: -39%;
+    --wave-strip: 24%;
+    --wave-lift: -15%;
+  }
 }
 
 .favorites {
@@ -148,6 +203,8 @@
 }
 
 .favorites__inner {
+  position: relative;
+  z-index: 1;
   max-width: var(--container);
   margin: 0 auto;
   display: flex;
